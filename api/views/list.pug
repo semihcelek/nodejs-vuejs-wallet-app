@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    h1 The number of item is #{items.lenght}
+    each item in items
+      h3 #{item.name}
+      p #{item.amount}
+    pre #{JSON.stringify(data, null, 4)}
