@@ -1,3 +1,4 @@
 module.exports =(req, res, next) => {
-    res.send(401)
+    if(!req.isAuthenticated()) return res.redirect('/auth/login')
+    next()
 }

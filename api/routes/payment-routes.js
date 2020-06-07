@@ -1,6 +1,9 @@
 const express =require('express')
 const router = express.Router()
 const PaymentService = require('../services/payment-service')
+const ensureLogin= require('../middleware/ensure-login')
+
+router.get('/*/json', ensureLogin)
 
 router.get('/all',  async (req, res) => {
     const payments =  await PaymentService.findAll()
@@ -24,7 +27,7 @@ router.get('/:id/json',  async (req, res) => {
     res.send(user)
 
 })
-router.post('/', async (req, res) => {
+router.post('/', ensureLogin, async (req, res) => {
     const user = await PaymentService.add(req.body)
     res.send(user)
 })
