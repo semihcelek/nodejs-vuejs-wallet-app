@@ -1,12 +1,22 @@
 <script>
 import Navigation from "@/components/navigation.vue";
 import WalletShow from "@/components/wallet-show.vue";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "Wallet",
   components: {
     Navigation,
     WalletShow
+  },
+  computed: {
+    ...mapState(["payments"])
+  },
+  methods: {
+    ...mapActions(["fetchPayments"])
+  },
+  created() {
+    this.fetchPayments();
   }
 };
 </script>
@@ -14,7 +24,7 @@ export default {
 <template lang="pug">
    div  
       navigation
-      walletShow
+      walletShow(v-for="payment in payments", :payment="payment")
     
 </template>
 
