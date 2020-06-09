@@ -35,8 +35,8 @@ app.set('view engine', 'pug')
 app.use('/payments', paymentRouter)
 app.use('/auth', authRouter)
 
-app.get('/', ensureLogin ,(req, res, next) => {
-    res.render('index', { username: req.user.username})
+app.get('/', (req, res, next) => {  //middleware removed
+    res.render('index', /* { username: req.user.username} */)
 })
 
 module.exports = app
