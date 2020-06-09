@@ -7,7 +7,8 @@ export default {
 <template>
   <nav class="basic">
     <router-link to="/">Login</router-link> |
-    <router-link to="/register">Register</router-link>
+    <router-link to="/register">Register</router-link> |
+    <router-link to="/wallet">Wallet</router-link>
   </nav>
 </template>
 
